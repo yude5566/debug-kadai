@@ -110,6 +110,9 @@
         function resetCountdown() {
             clearInterval(countdownInterval);
             isPaused = false; //一時停止を解除
+            document.getElementById('timer').innerText = "00:00"; // タイマー表示をリセット
+            document.getElementById('minutes').value = ""; // 入力フォームをリセット
+            document.getElementById('seconds').value = ""; // 入力フォームをリセット
             setMode("restart");
         }
 
