@@ -56,6 +56,8 @@
         let countdownInterval;
         let alertInterval;
         let isPaused = false;
+        let initialMinutes = 0;
+        let initialSeconds = 0;
 
         // 入力フォームの値をタイマーに表示する関数
         function updateTimer() {
@@ -75,6 +77,9 @@
 
         // カウントダウンを開始する関数
         function startCountdown() {
+            initialMinutes = document.getElementById('minutes').value || 0;
+        initialSeconds = document.getElementById('seconds').value || 0;
+
             let minutes = document.getElementById('minutes').value || 0;
             let seconds = document.getElementById('seconds').value || 0;
             let timeLeft = (minutes * 60) + parseInt(seconds);
@@ -110,9 +115,9 @@
         function resetCountdown() {
             clearInterval(countdownInterval);
             isPaused = false; //一時停止を解除
-            document.getElementById('timer').innerText = "00:00"; // タイマー表示をリセット
-            document.getElementById('minutes').value = ""; // 入力フォームをリセット
-            document.getElementById('seconds').value = ""; // 入力フォームをリセット
+
+            document.getElementById('timer').innerText = `${String(initialMinutes).padStart(2, '0')}:${String(initialSeconds).padStart(2, '0')}`;
+            
             setMode("restart");
         }
 
